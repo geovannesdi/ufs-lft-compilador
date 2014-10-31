@@ -39,7 +39,7 @@ public class AppTela extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        jTFErros = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -55,7 +55,6 @@ public class AppTela extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         jBNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Add.png"))); // NOI18N
-        jBNovo.setActionCommand("");
         jBNovo.setBorder(null);
         jBNovo.setFocusable(false);
         jBNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -66,12 +65,16 @@ public class AppTela extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jBNovo);
-        jBNovo.getAccessibleContext().setAccessibleName("");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Save.png"))); // NOI18N
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton2);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Print.png"))); // NOI18N
@@ -95,14 +98,16 @@ public class AppTela extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Erros:"));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTFErros.setEditable(false);
+        jTFErros.setBorder(javax.swing.BorderFactory.createTitledBorder("Erros:"));
+        jTFErros.setCaretColor(new java.awt.Color(255, 0, 0));
+        jTFErros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTFErrosActionPerformed(evt);
             }
         });
 
@@ -144,7 +149,7 @@ public class AppTela extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTextField1)
+            .addComponent(jTFErros)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +158,7 @@ public class AppTela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTFErros, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,14 +168,25 @@ public class AppTela extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTFErrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFErrosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTFErrosActionPerformed
 
     private void jBNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoActionPerformed
-        //JOptionPane.showMessageDialog(null, "Evento Funcionando");
-        jTabbedPane2.add(new JTextArea(),"new");
+        
+        //jTabbedPane2.add(new JTextArea(),"new");
+        jTabbedPane2.add("novo " + jTabbedPane2.getTabCount(), new JTextArea());
+        
+       
     }//GEN-LAST:event_jBNovoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+     
+     
+        jTabbedPane2.remove(1);
+     
+     
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,9 +238,9 @@ public class AppTela extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextField jTFErros;
+    public javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

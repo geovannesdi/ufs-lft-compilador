@@ -6,6 +6,7 @@
 
 package tela_plft5;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -176,6 +177,7 @@ public class AppTela extends javax.swing.JFrame {
         
         //jTabbedPane2.add(new JTextArea(),"new");
         jTabbedPane2.add("novo " + jTabbedPane2.getTabCount(), new JTextArea());
+        
         
        
     }//GEN-LAST:event_jBNovoActionPerformed

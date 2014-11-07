@@ -19,8 +19,12 @@ public class AppTela extends javax.swing.JFrame {
     /**
      * Creates new form AppTela
      */
+    private int contadorPagina;
     public AppTela() {
         initComponents();
+        contadorPagina=1;
+        
+        initTabComponent(0);
     }
 
     /**
@@ -84,11 +88,13 @@ public class AppTela extends javax.swing.JFrame {
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
 
+        jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
-        jTabbedPane2.addTab("new", jScrollPane4);
+        jTabbedPane2.addTab("novo 1", new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Delete.png")), jScrollPane4); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -174,12 +180,19 @@ public class AppTela extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFErrosActionPerformed
 
     private void jBNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoActionPerformed
+<<<<<<< .mine
+        //JOptionPane.showMessageDialog(null, "Evento Funcionando");
+        String titulo = "novo "+ (++contadorPagina);
+        jTabbedPane2.add(new JTextArea(),titulo);
+        initTabComponent(jTabbedPane2.getTabCount()-1);
+=======
         
         //jTabbedPane2.add(new JTextArea(),"new");
         jTabbedPane2.add("novo " + jTabbedPane2.getTabCount(), new JTextArea());
         
         
        
+>>>>>>> .r8
     }//GEN-LAST:event_jBNovoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -193,6 +206,13 @@ public class AppTela extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    private void initTabComponent(int i) {
+        jTabbedPane2.setTabComponentAt(i,
+                 new ButtonTabComponent(jTabbedPane2));
+    }
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

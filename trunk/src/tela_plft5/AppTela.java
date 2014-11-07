@@ -1,18 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package tela_plft5;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
  *
+ * @author Anderson Cunha
+ * @author Antonio Douglas
+ * @author Erivan Santana 
  * @author Geovanne Barreto
+ *         
  */
 public class AppTela extends javax.swing.JFrame {
 
@@ -23,7 +21,6 @@ public class AppTela extends javax.swing.JFrame {
     public AppTela() {
         initComponents();
         contadorPagina=1;
-        
         initTabComponent(0);
     }
 
@@ -38,8 +35,8 @@ public class AppTela extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         jBNovo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBSalvar = new javax.swing.JButton();
+        jBImprimir = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -47,15 +44,16 @@ public class AppTela extends javax.swing.JFrame {
         jTFErros = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jMINovo = new javax.swing.JMenuItem();
+        jMIAbrir = new javax.swing.JMenuItem();
+        jMNovo = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Alpha");
 
         jToolBar1.setRollover(true);
 
@@ -71,22 +69,22 @@ public class AppTela extends javax.swing.JFrame {
         });
         jToolBar1.add(jBNovo);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Save.png"))); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Save.png"))); // NOI18N
+        jBSalvar.setFocusable(false);
+        jBSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBSalvarActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(jBSalvar);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Print.png"))); // NOI18N
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        jBImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Print.png"))); // NOI18N
+        jBImprimir.setFocusable(false);
+        jBImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBImprimir);
 
         jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -94,47 +92,49 @@ public class AppTela extends javax.swing.JFrame {
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
-        jTabbedPane2.addTab("novo 1", new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Delete.png")), jScrollPane4); // NOI18N
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jTabbedPane2.addTab("novo 1", jScrollPane4);
 
         jTFErros.setEditable(false);
         jTFErros.setBorder(javax.swing.BorderFactory.createTitledBorder("Erros:"));
-        jTFErros.setCaretColor(new java.awt.Color(255, 0, 0));
+        jTFErros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTFErros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFErrosActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane2)
+            .addComponent(jTFErros)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTFErros, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         jMenu1.setText("Arquivos");
 
-        jMenuItem1.setText("Novo");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMINovo.setText("Novo");
+        jMINovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMINovoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMINovo);
 
-        jMenuItem2.setText("Abrir");
-        jMenu1.add(jMenuItem2);
+        jMIAbrir.setText("Abrir");
+        jMenu1.add(jMIAbrir);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu5.setText("Novo");
-        jMenuBar1.add(jMenu5);
+        jMNovo.setText("Novo");
+        jMenuBar1.add(jMNovo);
 
         jMenu6.setText("Abrir");
         jMenuBar1.add(jMenu6);
@@ -154,54 +154,39 @@ public class AppTela extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTFErros)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFErros, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMINovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMINovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMINovoActionPerformed
 
     private void jTFErrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFErrosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFErrosActionPerformed
 
     private void jBNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoActionPerformed
-<<<<<<< .mine
         //JOptionPane.showMessageDialog(null, "Evento Funcionando");
         String titulo = "novo "+ (++contadorPagina);
-        jTabbedPane2.add(new JTextArea(),titulo);
+        jTabbedPane2.add(new JScrollPane(new JTextArea()),titulo);
         initTabComponent(jTabbedPane2.getTabCount()-1);
-=======
-        
-        //jTabbedPane2.add(new JTextArea(),"new");
-        jTabbedPane2.add("novo " + jTabbedPane2.getTabCount(), new JTextArea());
-        
-        
-       
->>>>>>> .r8
+     
     }//GEN-LAST:event_jBNovoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
-     
-        jTabbedPane2.remove(1);
-     
-     
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
+        jTFErros.setText("erro sintaxe na linha 14");
+    }//GEN-LAST:event_jBSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,22 +231,22 @@ public class AppTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBImprimir;
     private javax.swing.JButton jBNovo;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBSalvar;
+    private javax.swing.JMenuItem jMIAbrir;
+    private javax.swing.JMenuItem jMINovo;
+    private javax.swing.JMenu jMNovo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTFErros;
-    public javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables

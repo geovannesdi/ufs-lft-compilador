@@ -78,9 +78,26 @@ public class ButtonTabComponent extends JPanel {
         public void actionPerformed(ActionEvent e) {
             int i = pane.indexOfTabComponent(ButtonTabComponent.this);
             if (i != -1) {
+                
+                
+
+                // Ação do botão fechar é aqui 
+                JOptionPane.showMessageDialog(null, "Estou Aqui");
+                
+                
+                
                 pane.remove(i);
             }
         }
+        
+        public boolean texteAreaVazio(){
+            
+            
+            
+            return true;
+        }
+        
+        
 
         //we don't want to update UI for this button
         public void updateUI() {

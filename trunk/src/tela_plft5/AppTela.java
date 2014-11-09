@@ -1,5 +1,7 @@
 package tela_plft5;
 
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -33,15 +35,26 @@ public class AppTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         jToolBar1 = new javax.swing.JToolBar();
-        jBNovo = new javax.swing.JButton();
+        jBNovoArquivo = new javax.swing.JButton();
+        jBNovoProjeto = new javax.swing.JButton();
+        jBAbrirProjeto = new javax.swing.JButton();
         jBSalvar = new javax.swing.JButton();
-        jBImprimir = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        jBALexico = new javax.swing.JButton();
+        jBASintatico = new javax.swing.JButton();
+        jBASemantico = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
+        jBVoltar = new javax.swing.JButton();
+        jBExecutar = new javax.swing.JButton();
+        jBAvancar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
-        jTFErros = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTAErros = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMINovo = new javax.swing.JMenuItem();
@@ -50,26 +63,43 @@ public class AppTela extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jMAjuda = new javax.swing.JMenu();
+        jMSobre = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alpha");
 
         jToolBar1.setRollover(true);
 
-        jBNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Add.png"))); // NOI18N
-        jBNovo.setBorder(null);
-        jBNovo.setFocusable(false);
-        jBNovo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBNovo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBNovo.addActionListener(new java.awt.event.ActionListener() {
+        jBNovoArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Create.png"))); // NOI18N
+        jBNovoArquivo.setText("Novo");
+        jBNovoArquivo.setBorder(null);
+        jBNovoArquivo.setFocusable(false);
+        jBNovoArquivo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNovoArquivo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBNovoArquivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNovoActionPerformed(evt);
+                jBNovoArquivoActionPerformed(evt);
             }
         });
-        jToolBar1.add(jBNovo);
+        jToolBar1.add(jBNovoArquivo);
+
+        jBNovoProjeto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Software.png"))); // NOI18N
+        jBNovoProjeto.setText("Novo Projeto");
+        jBNovoProjeto.setFocusable(false);
+        jBNovoProjeto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNovoProjeto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBNovoProjeto);
+
+        jBAbrirProjeto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Documents.png"))); // NOI18N
+        jBAbrirProjeto.setText("Abrir Projeto");
+        jBAbrirProjeto.setFocusable(false);
+        jBAbrirProjeto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAbrirProjeto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBAbrirProjeto);
 
         jBSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Save.png"))); // NOI18N
+        jBSalvar.setText("salvar");
         jBSalvar.setFocusable(false);
         jBSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -79,12 +109,67 @@ public class AppTela extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jBSalvar);
+        jToolBar1.add(jSeparator2);
 
-        jBImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Print.png"))); // NOI18N
-        jBImprimir.setFocusable(false);
-        jBImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jBImprimir);
+        jBALexico.setText("Analizador Lexico");
+        jBALexico.setFocusable(false);
+        jBALexico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBALexico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBALexico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBALexicoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBALexico);
+
+        jBASintatico.setText("Analizador Sintatico");
+        jBASintatico.setFocusable(false);
+        jBASintatico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBASintatico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBASintatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBASintaticoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBASintatico);
+
+        jBASemantico.setText("Analizador Semantico");
+        jBASemantico.setFocusable(false);
+        jBASemantico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBASemantico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBASemantico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBASemanticoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBASemantico);
+        jToolBar1.add(jSeparator3);
+
+        jBVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Left.png"))); // NOI18N
+        jBVoltar.setText("Voltar");
+        jBVoltar.setFocusable(false);
+        jBVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBVoltar);
+
+        jBExecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Shield.png"))); // NOI18N
+        jBExecutar.setText("Executar");
+        jBExecutar.setFocusable(false);
+        jBExecutar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBExecutar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBExecutar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExecutarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBExecutar);
+
+        jBAvancar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Next.png"))); // NOI18N
+        jBAvancar.setText("Avançar");
+        jBAvancar.setFocusable(false);
+        jBAvancar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAvancar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBAvancar);
 
         jTabbedPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -94,28 +179,27 @@ public class AppTela extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("novo 1", jScrollPane4);
 
-        jTFErros.setEditable(false);
-        jTFErros.setBorder(javax.swing.BorderFactory.createTitledBorder("Erros:"));
-        jTFErros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTFErros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFErrosActionPerformed(evt);
-            }
-        });
+        jTAErros.setEditable(false);
+        jTAErros.setColumns(20);
+        jTAErros.setForeground(new java.awt.Color(255, 0, 51));
+        jTAErros.setRows(5);
+        jTAErros.setBorder(javax.swing.BorderFactory.createTitledBorder("Erros:"));
+        jScrollPane1.setViewportView(jTAErros);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
-            .addComponent(jTFErros)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFErros, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jMenu1.setText("Arquivos");
@@ -145,8 +229,16 @@ public class AppTela extends javax.swing.JFrame {
         jMenu3.setText("Configurações");
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Ajuda");
-        jMenuBar1.add(jMenu4);
+        jMAjuda.setText("Ajuda");
+        jMenuBar1.add(jMAjuda);
+
+        jMSobre.setText("Sobre");
+        jMSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMSobreMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMSobre);
 
         setJMenuBar(jMenuBar1);
 
@@ -172,21 +264,35 @@ public class AppTela extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMINovoActionPerformed
 
-    private void jTFErrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFErrosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFErrosActionPerformed
+    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
+       new SalvarProjeto().show();
+    }//GEN-LAST:event_jBSalvarActionPerformed
 
-    private void jBNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoActionPerformed
+    private void jBNovoArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoArquivoActionPerformed
         //JOptionPane.showMessageDialog(null, "Evento Funcionando");
         String titulo = "novo "+ (++contadorPagina);
         jTabbedPane2.add(new JScrollPane(new JTextArea()),titulo);
         initTabComponent(jTabbedPane2.getTabCount()-1);
-     
-    }//GEN-LAST:event_jBNovoActionPerformed
 
-    private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-        jTFErros.setText("erro sintaxe na linha 14");
-    }//GEN-LAST:event_jBSalvarActionPerformed
+    }//GEN-LAST:event_jBNovoArquivoActionPerformed
+
+    private void jMSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSobreMouseClicked
+             JOptionPane.showMessageDialog(null, "Estou no evento");    }//GEN-LAST:event_jMSobreMouseClicked
+
+    private void jBALexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBALexicoActionPerformed
+         jTAErros.setText("lexico");
+    }//GEN-LAST:event_jBALexicoActionPerformed
+
+    private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASintaticoActionPerformed
+         jTAErros.setText("Sintatico");    }//GEN-LAST:event_jBASintaticoActionPerformed
+
+    private void jBASemanticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASemanticoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBASemanticoActionPerformed
+
+    private void jBExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExecutarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBExecutarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,21 +337,33 @@ public class AppTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBImprimir;
-    private javax.swing.JButton jBNovo;
+    private javax.swing.JButton jBALexico;
+    private javax.swing.JButton jBASemantico;
+    private javax.swing.JButton jBASintatico;
+    private javax.swing.JButton jBAbrirProjeto;
+    private javax.swing.JButton jBAvancar;
+    private javax.swing.JButton jBExecutar;
+    private javax.swing.JButton jBNovoArquivo;
+    private javax.swing.JButton jBNovoProjeto;
     private javax.swing.JButton jBSalvar;
+    private javax.swing.JButton jBVoltar;
+    private javax.swing.JMenu jMAjuda;
     private javax.swing.JMenuItem jMIAbrir;
     private javax.swing.JMenuItem jMINovo;
     private javax.swing.JMenu jMNovo;
+    private javax.swing.JMenu jMSobre;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTFErros;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JTextArea jTAErros;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JToolBar jToolBar1;

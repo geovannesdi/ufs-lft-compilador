@@ -4,13 +4,21 @@
 // Fri Jan 16 10:35:17 GMT-03:00 2015
 //----------------------------------------------------
 
-package jflex;
+package jflex_plft5;
 
 /** CUP generated interface containing symbol constants. */
 public interface CodSym {
   /* terminals */
+  
+  
+  
+  public static final int EOF = 0;
   public static final int error = 1;
   public static final int ANY = 2;
-  public static final int EOF = 0;
+  public static final int PROGRAM = 3;
+  public static final int BEGIN = 4;
+  public static final int END = 5;
+  public static final int IDENTIFICADOR = 6;
+  
 }
 

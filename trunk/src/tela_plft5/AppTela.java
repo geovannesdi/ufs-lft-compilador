@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import jflex_plft5.Teste;
+
 /**
  *
  * @author Anderson Cunha
@@ -280,7 +282,10 @@ public class AppTela extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Estou no evento");    }//GEN-LAST:event_jMSobreMouseClicked
 
     private void jBALexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBALexicoActionPerformed
-         jTAErros.setText("lexico");
+    	
+    	
+    	Teste msn = new Teste();
+    	msn.setarTexto(jTextArea4.getText());
     }//GEN-LAST:event_jBALexicoActionPerformed
 
     private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASintaticoActionPerformed

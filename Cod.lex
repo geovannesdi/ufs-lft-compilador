@@ -7,6 +7,8 @@ import java.io.IOException;
 import jflex.CodSym;
 import static jflex.CodSym.*;
 
+//Aqui coloca o que a pessoa quer que apareca no código.
+
 %%
 
 %class CodLex
@@ -45,9 +47,16 @@ import static jflex.CodSym.*;
 	}
 %}
 
-ANY			=	.
+%state STRING, COMENTARIOS
+
+
+caracter			=	[a-zA-Z]
+digito				=	[0-9]
+identificador		=	{caracter}+ (({caracter} | {digito} | _)*)
+
 
 %%
 
-{ANY}		{	return sym(ANY); }
-
+"PROGRAM"				{	return sym(PROGRAM); 								}
+"BEGIN"				    {	return sym(BEGIN);          						}
+{identificador}			{	return sym(IDENTIFICADOR, yytext());					}

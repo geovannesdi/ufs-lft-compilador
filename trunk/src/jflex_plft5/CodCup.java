@@ -4,7 +4,7 @@
 // Fri Jan 16 10:35:17 GMT-03:00 2015
 //----------------------------------------------------
 
-package jflex;
+package jflex_plft5;
 
 import java_cup.runtime.*;
 

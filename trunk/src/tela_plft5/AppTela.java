@@ -283,9 +283,6 @@ public class AppTela extends javax.swing.JFrame {
 
     private void jBALexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBALexicoActionPerformed
     	
-    	
-    	Teste msn = new Teste();
-    	msn.setarTexto(jTextArea4.getText());
     }//GEN-LAST:event_jBALexicoActionPerformed
 
     private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASintaticoActionPerformed

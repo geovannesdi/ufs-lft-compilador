@@ -1,11 +1,11 @@
 
-package jflex;
+package jflex_plft5;
 
 import java_cup.runtime.*;
 import java.io.IOException;
 
-import jflex.CodSym;
-import static jflex.CodSym.*;
+import jflex_plft5.CodSym;
+import static jflex_plft5.CodSym.*;
 
 //Aqui coloca o que a pessoa quer que apareca no código.
 
@@ -21,7 +21,7 @@ import static jflex.CodSym.*;
 %final
 // %abstract
 
-%cupsym jflex.CodSym
+%cupsym jflex_plft5.CodSym
 %cup
 // %cupdebug
 
@@ -53,10 +53,12 @@ import static jflex.CodSym.*;
 caracter			=	[a-zA-Z]
 digito				=	[0-9]
 identificador		=	{caracter}+ (({caracter} | {digito} | _)*)
-
+ANY                 = .
 
 %%
 
+                
+{ANY}                   {	return sym(ANY); 								}  
 "PROGRAM"				{	return sym(PROGRAM); 								}
 "BEGIN"				    {	return sym(BEGIN);     								}
 "THEN"					{	return sym(THEN);     								}
@@ -106,4 +108,6 @@ identificador		=	{caracter}+ (({caracter} | {digito} | _)*)
 "IMPLEMENTATION"		{	return sym(IMPLEMENTATION); 						}
 "OR"				    {	return sym(OR);     								}
 "XOR"					{	return sym(XOR);     								}
+"WRITE"					{	return sym(WRITE);     								}
+"READ"					{	return sym(READ);     								}
 {identificador}			{	return sym(IDENTIFICADOR, yytext());				}

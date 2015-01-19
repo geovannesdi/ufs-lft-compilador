@@ -1,11 +1,16 @@
 package tela_plft5;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import SalvarAbrirArquivo.Salvar;
 import jflex_plft5.Teste;
 
 /**
@@ -20,12 +25,19 @@ public class AppTela extends javax.swing.JFrame {
 
     /**
      * Creates new form AppTela
-     */
+     */  
+	
+	Salvar salvar;
+        File _caminho;
+
+	
     private int contadorPagina;
     public AppTela() {
         initComponents();
         contadorPagina=1;
         initTabComponent(0);
+        
+        salvar = new Salvar();
     }
 
     /**
@@ -38,6 +50,7 @@ public class AppTela extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
+        jfc_arquivos = new javax.swing.JFileChooser();
         jToolBar1 = new javax.swing.JToolBar();
         jBNovoArquivo = new javax.swing.JButton();
         jBNovoProjeto = new javax.swing.JButton();
@@ -98,6 +111,11 @@ public class AppTela extends javax.swing.JFrame {
         jBAbrirProjeto.setFocusable(false);
         jBAbrirProjeto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBAbrirProjeto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBAbrirProjeto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAbrirProjetoActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBAbrirProjeto);
 
         jBSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/PNG-24/Save.png"))); // NOI18N
@@ -263,11 +281,11 @@ public class AppTela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMINovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMINovoActionPerformed
-        // TODO add your handling code here:
+    	
     }//GEN-LAST:event_jMINovoActionPerformed
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-       new SalvarProjeto().show();
+    	salvar.ManterTexto(jfc_arquivos,_caminho).SalvarArquivoNormal(jTextArea4.getText());
     }//GEN-LAST:event_jBSalvarActionPerformed
 
     private void jBNovoArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoArquivoActionPerformed
@@ -286,7 +304,8 @@ public class AppTela extends javax.swing.JFrame {
     }//GEN-LAST:event_jBALexicoActionPerformed
 
     private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASintaticoActionPerformed
-         jTAErros.setText("Sintatico");    }//GEN-LAST:event_jBASintaticoActionPerformed
+         
+    }//GEN-LAST:event_jBASintaticoActionPerformed
 
     private void jBASemanticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASemanticoActionPerformed
         // TODO add your handling code here:
@@ -295,6 +314,17 @@ public class AppTela extends javax.swing.JFrame {
     private void jBExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExecutarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBExecutarActionPerformed
+
+    private void jBAbrirProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAbrirProjetoActionPerformed
+       try {
+            _caminho =salvar.ManterTexto(jfc_arquivos, _caminho).AbrirArquivo();
+                     
+            jTextArea4.read(new FileReader(_caminho.getAbsolutePath()), null);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jBAbrirProjetoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,5 +399,7 @@ public class AppTela extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JFileChooser jfc_arquivos;
+
     // End of variables declaration//GEN-END:variables
 }

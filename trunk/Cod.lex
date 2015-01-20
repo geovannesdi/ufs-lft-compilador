@@ -1,4 +1,3 @@
-
 package jflex_plft5;
 
 import java_cup.runtime.*;
@@ -16,6 +15,7 @@ import static jflex_plft5.CodSym.*;
 %unicode
 %line
 %column
+%ignorecase
 
 // %public
 %final
@@ -52,14 +52,17 @@ import static jflex_plft5.CodSym.*;
 
 caracter			=	[a-zA-Z]
 digito				=	[0-9]
-identificador		=	{caracter}+ (({caracter} | {digito} | _)*)
-ANY                 = .
+identificador		=	(({caracter} | _)+ ({caracter} | {digito} | _)*)
+delimitador		 	= 	[\ \n\t\r]+										 //espaco, enter, tabulacao ...
+numero_inteiro 		= 	[digito]+
+numero_real			= 	[digito]+ (\.[digito]+)? (e[+\-]? [digito]+)?
+ANY   				= 		.
 
 %%
 
-                
-{ANY}                   {	return sym(ANY); 								}  
-"PROGRAM"				{	return sym(PROGRAM); 								}
+{ANY}                   {       return sym(ANY);                                }
+{delimitador}			{}
+"PRogRAM"				{	return sym(PROGRAM); 								}
 "BEGIN"				    {	return sym(BEGIN);     								}
 "THEN"					{	return sym(THEN);     								}
 "ELSE"				    {	return sym(ELSE);     								}
@@ -108,6 +111,16 @@ ANY                 = .
 "IMPLEMENTATION"		{	return sym(IMPLEMENTATION); 						}
 "OR"				    {	return sym(OR);     								}
 "XOR"					{	return sym(XOR);     								}
-"WRITE"					{	return sym(WRITE);     								}
-"READ"					{	return sym(READ);     								}
 {identificador}			{	return sym(IDENTIFICADOR, yytext());				}
+{numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}
+{numero_real}			{	return sym(NUMERO_REAL, yytext());					}
+"WRITE"				    {	return sym(WRITE);     								}
+"READ"					{	return sym(READ); 									}
+"INTEGER"				{	return sym(INTEGER);     							}
+"REAL"					{	return sym(REAL);     								}
+"FLOAT"					{	return sym(FLOAT);     								}
+"DOUBLE"				{	return sym(DOUBLE);     							}
+"BOOLEAN"				{	return sym(BOOLEAN);     							}
+"TRUE"					{	return sym(TRUE);     								}
+"FALSE"					{	return sym(FALSE);     								}
+"CHAR"					{	return sym(CHAR);     								}

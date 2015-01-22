@@ -35,7 +35,7 @@ public class ManterTexto {
             caminho = _jfc_arquivos.getSelectedFile().getAbsolutePath();  // o getSelectedFile pega o arquivo e o getAbsolutePath retorna uma string contendo o endereço.
         }
 
-        arquivo = new File(caminho + ".java"); // o +".txt" é para ele salvar como txt . Para outro tipo de arquivo, mude a extensao final. se você nao mudar a extensao, ele vai criar como ".bin"
+        arquivo = new File(caminho + ".txt"); // o +".txt" é para ele salvar como txt . Para outro tipo de arquivo, mude a extensao final. se você nao mudar a extensao, ele vai criar como ".bin"
 
         //System.out.println(_caminhoArquivoAberto);
         try {
@@ -80,32 +80,6 @@ public class ManterTexto {
         return file;
     }
 
-    public void SalvarArquivoNormal(String texto) {
-        System.out.println(_caminhoArquivoAberto);
-        if (_caminhoArquivoAberto != null && _caminhoArquivoAberto.exists()) {
-            System.out.println("Entrou aqui");
-
-            try {
-
-                StringBuilder stringb;
-                FileWriter escrever = new FileWriter(_caminhoArquivoAberto, true);
-                BufferedWriter adicionar = new BufferedWriter(escrever);
-                adicionar.write(texto);
-                adicionar.newLine();
-                adicionar.close();
-                escrever.close();
-                System.out.println("passou não");
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-
-            salvarArquivoJanela(texto);
-
-        }
-
-    }
+   
 
 }

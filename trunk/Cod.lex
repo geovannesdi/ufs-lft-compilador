@@ -6,7 +6,7 @@ import java.io.IOException;
 import jflex_plft5.CodSym;
 import static jflex_plft5.CodSym.*;
 
-//Aqui coloca o que a pessoa quer que apareca no código.
+//Aqui coloca o que a pessoa quer que apareca no cï¿½digo.
 
 %%
 
@@ -123,4 +123,4 @@ ANY   				= 		.
 "BOOLEAN"				{	return sym(BOOLEAN);     							}
 "TRUE"					{	return sym(TRUE);     								}
 "FALSE"					{	return sym(FALSE);     								}
-"CHAR"					{	return sym(CHAR);     								}
+"CHAR"					{	return sym(CHAR);  								}

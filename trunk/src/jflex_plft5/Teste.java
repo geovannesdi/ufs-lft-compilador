@@ -2,20 +2,35 @@ package jflex_plft5;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java_cup.runtime.Symbol;
 
 
 public class Teste {
 
-	
-			
-		public static void main(String[] args) throws IOException{
-			CodLex lexico = new CodLex(new FileInputStream(new File("lft-ufs-teste-arquivo.txt")));
-			Symbol token = lexico.next_token();
-			while(token.sym != CodLex.YYEOF){
-				System.out.println(token.sym + " - " + token.value.toString());
-				token = lexico.next_token();
-			}
-		}
-	}
+    
+    public String resultado = null;
+    
+    
+
+                public String resultado(String enderecoArquivo) throws IOException
+                {
+                    resultado="";   
+                    CodLex lexico = new CodLex(new FileInputStream(new File(enderecoArquivo)));
+                                                Symbol token = lexico.next_token();
+                                                
+                                                while(token.sym !=0)
+                                                {
+                                                        
+                                                        
+                                                        resultado += (token.sym + " - " + token.value.toString())+"\n";
+                                                        token = lexico.next_token();
+                                                        System.out.println(token.sym + " - ");
+                                                        
+                                                }
+                                                
+                        return resultado;
+                }
+
+}

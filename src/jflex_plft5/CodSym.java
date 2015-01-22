@@ -72,4 +72,6 @@ public interface CodSym {
 	public static final int TRUE = 60;
 	public static final int FALSE = 61;
 	public static final int CHAR = 62;
+      
+        
 }

@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import SalvarAbrirArquivo.Salvar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jflex_plft5.Teste;
 
 /**
@@ -36,7 +38,6 @@ public class AppTela extends javax.swing.JFrame {
         initComponents();
         contadorPagina=1;
         initTabComponent(0);
-        
         salvar = new Salvar();
     }
 
@@ -285,7 +286,9 @@ public class AppTela extends javax.swing.JFrame {
     }//GEN-LAST:event_jMINovoActionPerformed
 
     private void jBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarActionPerformed
-    	salvar.ManterTexto(jfc_arquivos,_caminho).SalvarArquivoNormal(jTextArea4.getText());
+    	_caminho=salvar.ManterTexto(jfc_arquivos,_caminho).salvarArquivoJanela(jTextArea4.getText());
+        jTabbedPane2.setTitleAt(0,_caminho.getName());
+        this.setTitle(_caminho.getAbsolutePath());
     }//GEN-LAST:event_jBSalvarActionPerformed
 
     private void jBNovoArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoArquivoActionPerformed
@@ -312,14 +315,25 @@ public class AppTela extends javax.swing.JFrame {
     }//GEN-LAST:event_jBASemanticoActionPerformed
 
     private void jBExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExecutarActionPerformed
-        // TODO add your handling code here:
+            try {
+                Teste obj = new Teste();
+                                    
+                jTAErros.setText(obj.resultado(_caminho.getAbsolutePath()));
+                
+            } catch (IOException ex) {
+                Logger.getLogger(AppTela.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jBExecutarActionPerformed
 
     private void jBAbrirProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAbrirProjetoActionPerformed
        try {
             _caminho =salvar.ManterTexto(jfc_arquivos, _caminho).AbrirArquivo();
-                     
-            jTextArea4.read(new FileReader(_caminho.getAbsolutePath()), null);
+            if(_caminho!=null)
+            {         
+             jTextArea4.read(new FileReader(_caminho.getAbsolutePath()), null);
+             jTabbedPane2.setTitleAt(0,_caminho.getName());
+             this.setTitle(_caminho.getAbsolutePath());
+            }
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

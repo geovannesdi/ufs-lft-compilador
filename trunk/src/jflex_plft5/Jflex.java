@@ -7,7 +7,7 @@ import java.io.IOException;
 import java_cup.runtime.Symbol;
 
 
-public class Teste {
+public class Jflex {
 
     
     public String resultado = null;
@@ -22,14 +22,9 @@ public class Teste {
                                                 
                                                 while(token.sym !=0)
                                                 {
-                                                        
-                                                        
                                                         resultado += (token.sym + " - " + token.value.toString())+"\n";
                                                         token = lexico.next_token();
-                                                        System.out.println(token.sym + " - ");
-                                                        
                                                 }
-                                                
                         return resultado;
                 }
 

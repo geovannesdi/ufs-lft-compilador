@@ -111,9 +111,6 @@ ANY   				= 		.
 "IMPLEMENTATION"		{	return sym(IMPLEMENTATION); 						}
 "OR"				    {	return sym(OR);     								}
 "XOR"					{	return sym(XOR);     								}
-{identificador}			{	return sym(IDENTIFICADOR, yytext());				}
-{numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}
-{numero_real}			{	return sym(NUMERO_REAL, yytext());					}
 "WRITE"				    {	return sym(WRITE);     								}
 "READ"					{	return sym(READ); 									}
 "INTEGER"				{	return sym(INTEGER);     							}
@@ -123,4 +120,7 @@ ANY   				= 		.
 "BOOLEAN"				{	return sym(BOOLEAN);     							}
 "TRUE"					{	return sym(TRUE);     								}
 "FALSE"					{	return sym(FALSE);     								}
-"CHAR"					{	return sym(CHAR);  								}
+"CHAR"					{	return sym(CHAR);  								    }
+{identificador}			{	return sym(IDENTIFICADOR, yytext());				}
+{numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}
+{numero_real}			{	return sym(NUMERO_REAL, yytext());					}

@@ -6,8 +6,6 @@ import java.io.IOException;
 import jflex_plft5.CodSym;
 import static jflex_plft5.CodSym.*;
 
-//Aqui coloca o que a pessoa quer que apareca no c�digo.
-
 %%
 
 %class CodLex
@@ -16,7 +14,6 @@ import static jflex_plft5.CodSym.*;
 %line
 %column
 %ignorecase
-
 // %public
 %final
 // %abstract
@@ -46,7 +43,6 @@ import static jflex_plft5.CodSym.*;
 		throw new IOException("illegal text at line = "+yyline+", column = "+yycolumn+", text = '"+yytext()+"'");
 	}
 %}
-
 %state STRING, COMENTARIOS
 
 
@@ -54,15 +50,14 @@ caracter			=	[a-zA-Z]
 digito				=	[0-9]
 identificador		=	(({caracter} | _)+ ({caracter} | {digito} | _)*)
 delimitador		 	= 	[\ \n\t\r]+										 //espaco, enter, tabulacao ...
-numero_inteiro 		= 	[digito]+
-numero_real			= 	[digito]+ (\.[digito]+)? (e[+\-]? [digito]+)?
-ANY   				= 		.
+numero_inteiro 		= 	[+\-]?{digito}+
+numero_real			= 	{digito}+ (\.{digito}+)? (e[+\-]? {digito}+)?
+ANY			=	.
 
 %%
 
-{ANY}                   {       return sym(ANY);                                }
-{delimitador}			{}
-"PRogRAM"				{	return sym(PROGRAM); 								}
+{ANY}					{	return sym(ANY); 									}
+"PROGRAM"				{	return sym(PROGRAM); 								}
 "BEGIN"				    {	return sym(BEGIN);     								}
 "THEN"					{	return sym(THEN);     								}
 "ELSE"				    {	return sym(ELSE);     								}
@@ -110,7 +105,7 @@ ANY   				= 		.
 "DO"				    {	return sym(DO);     								}
 "IMPLEMENTATION"		{	return sym(IMPLEMENTATION); 						}
 "OR"				    {	return sym(OR);     								}
-"XOR"					{	return sym(XOR);     								}
+"XOR"					{	return sym(XOR);									}
 "WRITE"				    {	return sym(WRITE);     								}
 "READ"					{	return sym(READ); 									}
 "INTEGER"				{	return sym(INTEGER);     							}
@@ -124,3 +119,4 @@ ANY   				= 		.
 {identificador}			{	return sym(IDENTIFICADOR, yytext());				}
 {numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}
 {numero_real}			{	return sym(NUMERO_REAL, yytext());					}
+{delimitador}			{}

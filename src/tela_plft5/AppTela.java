@@ -8,12 +8,15 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import SalvarAbrirArquivo.Salvar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jflex_plft5.Teste;
+import jflex_plft5.Jflex;
 
 /**
  *
@@ -29,7 +32,7 @@ public class AppTela extends javax.swing.JFrame {
      * Creates new form AppTela
      */  
 	
-	Salvar salvar;
+	    Salvar salvar;
         File _caminho;
 
 	
@@ -316,7 +319,7 @@ public class AppTela extends javax.swing.JFrame {
 
     private void jBExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExecutarActionPerformed
             try {
-                Teste obj = new Teste();
+                Jflex obj = new Jflex();
                                     
                 jTAErros.setText(obj.resultado(_caminho.getAbsolutePath()));
                 
@@ -345,7 +348,21 @@ public class AppTela extends javax.swing.JFrame {
      */
     
     private void initTabComponent(int i) {
-        jTabbedPane2.setTabComponentAt(i,
+      jTabbedPane2.addChangeListener(new ChangeListener()
+        {  
+   
+             public void stateChanged(ChangeEvent arg0) {  
+           
+         JTabbedPane a = (JTabbedPane) arg0.getSource();  
+        
+       JOptionPane.showMessageDialog(null,"Mudei pra tab: "+a.getSelectedIndex());
+     }  
+       
+ });
+    	
+    	
+    	
+    	jTabbedPane2.setTabComponentAt(i,
                  new ButtonTabComponent(jTabbedPane2));
     }
     

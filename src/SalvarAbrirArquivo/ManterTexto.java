@@ -37,24 +37,19 @@ public class ManterTexto {
 
         arquivo = new File(caminho + ".txt"); // o +".txt" é para ele salvar como txt . Para outro tipo de arquivo, mude a extensao final. se você nao mudar a extensao, ele vai criar como ".bin"
 
-        //System.out.println(_caminhoArquivoAberto);
+
         try {
             StringBuilder stringb;
 
             FileWriter escrever = new FileWriter(arquivo, true);
             BufferedWriter adicionar = new BufferedWriter(escrever);
-
-            //System.out.println("aki");
             ArrayList<StringBuilder> linhas = new ArrayList<StringBuilder>();
-
             adicionar.write(texto);
-
             adicionar.newLine();
-
             adicionar.close();
             escrever.close();
             return arquivo;
-            //System.out.println("passou não");
+
         } catch (IOException e) {
             e.printStackTrace();
             return arquivo;
@@ -69,17 +64,10 @@ public class ManterTexto {
         // seleciona pra salvar ou abrir
         if (returnVal == _jfc_arquivos.APPROVE_OPTION) {
             file = _jfc_arquivos.getSelectedFile();
-            // if ("java".equals("java")) {
-        
-            System.out.print(file);
-            System.out.println(file);
-            System.out.println("problem accessing file" + file.getAbsolutePath());
         } else {
             System.out.println("File access cancelled by user.");
         }
         return file;
     }
-
-   
 
 }

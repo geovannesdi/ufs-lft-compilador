@@ -72,6 +72,14 @@ public interface CodSym {
 	public static final int TRUE = 60;
 	public static final int FALSE = 61;
 	public static final int CHAR = 62;
+	public static final int TEST = 63;
+	public static final int ATRIBUICAO = 64;
+	public static final int DIFERENTE = 65;
+	public static final int MENOR_QUE = 66;
+	public static final int MAIOR_QUE = 67;
+	
+	
+	
       
         
 }

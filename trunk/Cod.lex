@@ -48,10 +48,10 @@ import static jflex_plft5.CodSym.*;
 
 caracter			=	[a-zA-Z]
 digito				=	[0-9]
-identificador		=	(({caracter} | _)+ ({caracter} | {digito} | _)*)
+identificador		=	(({caracter} | _)+({caracter} | {digito} | _)*)
 delimitador		 	= 	[\ \n\t\r]+										 //espaco, enter, tabulacao ...
 numero_inteiro 		= 	[+\-]?{digito}+
-numero_real			= 	{digito}+ (\.{digito}+)? (e[+\-]? {digito}+)?
+numero_real			= 	{digito}+(\.{digito}+)?(e[+\-]?{digito}+)?
 ANY			=	.
 
 %%
@@ -116,7 +116,12 @@ ANY			=	.
 "TRUE"					{	return sym(TRUE);     								}
 "FALSE"					{	return sym(FALSE);     								}
 "CHAR"					{	return sym(CHAR);  								    }
+"test"					{	return sym(TEST);  								    }
 {identificador}			{	return sym(IDENTIFICADOR, yytext());				}
 {numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}
-{numero_real}			{	return sym(NUMERO_REAL, yytext());					}
+{numero_real}			{	return sym(NUMERO_REAL, yytext());			    	}
 {delimitador}			{}
+":="					{	return sym(ATRIBUICAO);						    	}
+"<>"					{	return sym(DIFERENTE);			    				}
+"<"						{	return sym(MENOR_QUE);			    				}
+">"						{	return sym(MAIOR_QUE);			    				}

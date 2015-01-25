@@ -1,3 +1,4 @@
+
 package jflex_plft5;
 
 import java_cup.runtime.*;
@@ -14,6 +15,7 @@ import static jflex_plft5.CodSym.*;
 %line
 %column
 %ignorecase
+
 // %public
 %final
 // %abstract
@@ -45,18 +47,16 @@ import static jflex_plft5.CodSym.*;
 %}
 %state STRING, COMENTARIOS
 
-
 caracter			=	[a-zA-Z]
 digito				=	[0-9]
-identificador		=	(({caracter} | _)+({caracter} | {digito} | _)*)
+identificador		=	(({caracter} | _)+({caracter} | {digito} | _)*|;)
 delimitador		 	= 	[\ \n\t\r]+										 //espaco, enter, tabulacao ...
 numero_inteiro 		= 	[+\-]?{digito}+
 numero_real			= 	{digito}+(\.{digito}+)?(e[+\-]?{digito}+)?
-ANY			=	.
+writeread 			=  	"("[^")"]*[^";"]*")" 							//ignora o que esta dentro write
 
 %%
 
-{ANY}					{	return sym(ANY); 									}
 "PROGRAM"				{	return sym(PROGRAM); 								}
 "BEGIN"				    {	return sym(BEGIN);     								}
 "THEN"					{	return sym(THEN);     								}
@@ -106,8 +106,8 @@ ANY			=	.
 "IMPLEMENTATION"		{	return sym(IMPLEMENTATION); 						}
 "OR"				    {	return sym(OR);     								}
 "XOR"					{	return sym(XOR);									}
-"WRITE"				    {	return sym(WRITE);     								}
-"READ"					{	return sym(READ); 									}
+"WRITE"|"WRITELN"		{	return sym(WRITE);     								}
+"READ"|"READLN"			{	return sym(READ); 									}
 "INTEGER"				{	return sym(INTEGER);     							}
 "REAL"					{	return sym(REAL);     								}
 "FLOAT"					{	return sym(FLOAT);     								}
@@ -116,12 +116,33 @@ ANY			=	.
 "TRUE"					{	return sym(TRUE);     								}
 "FALSE"					{	return sym(FALSE);     								}
 "CHAR"					{	return sym(CHAR);  								    }
-"test"					{	return sym(TEST);  								    }
+"["						{	return sym(ABRECONCHETE);							}
+"]"						{	return sym(FECHACONCHETE);							}
+"<"						{	return sym(MENOR_QUE);								}
+"<="					{	return sym(MENORIGUAL);								}
+"=>"					{	return sym(MAIORIGUAL);								}
+">"						{	return sym(MAIOR_QUE);								}
+":"						{	return sym(DP);										}
+";"						{   return sym(PV);										}
+"="						{   return sym(IGUAL);									}
+","						{	return sym(VG);										}
+"("						{	return sym(AP);										}
+")"						{	return sym(FP);										}
+"{"						{	return sym(ACHAVE);									}
+"}"						{	return sym(FCHAVE);									}
+":="					{	return sym(ATRIBUICAO);								}
+"|"						{	return sym(PO);										}
+"*"						{	return sym(MULT);									}
+"/"						{	return sym(DIVR);									}
+"+"						{	return sym(SOMA);									}
+"-"						{	return sym(SUB);									}
+"."						{	return sym(PONTO);									}
+"<>"					{	return sym(DIFERENTE);			    				}
 {identificador}			{	return sym(IDENTIFICADOR, yytext());				}
 {numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}
 {numero_real}			{	return sym(NUMERO_REAL, yytext());			    	}
 {delimitador}			{}
-":="					{	return sym(ATRIBUICAO);						    	}
-"<>"					{	return sym(DIFERENTE);			    				}
-"<"						{	return sym(MENOR_QUE);			    				}
-">"						{	return sym(MAIOR_QUE);			    				}
+{writeread}				{}
+
+
+

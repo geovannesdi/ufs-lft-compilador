@@ -307,6 +307,16 @@ public class AppTela extends javax.swing.JFrame {
 
     private void jBALexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBALexicoActionPerformed
     	
+    	 try {
+             Jflex obj = new Jflex();
+                                 
+             jTAErros.setText(obj.resultadoLexico(_caminho.getAbsolutePath()));
+             
+         } catch (IOException ex) {
+             Logger.getLogger(AppTela.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    
+    
     }//GEN-LAST:event_jBALexicoActionPerformed
 
     private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASintaticoActionPerformed
@@ -318,14 +328,7 @@ public class AppTela extends javax.swing.JFrame {
     }//GEN-LAST:event_jBASemanticoActionPerformed
 
     private void jBExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExecutarActionPerformed
-            try {
-                Jflex obj = new Jflex();
-                                    
-                jTAErros.setText(obj.resultado(_caminho.getAbsolutePath()));
-                
-            } catch (IOException ex) {
-                Logger.getLogger(AppTela.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           
     }//GEN-LAST:event_jBExecutarActionPerformed
 
     private void jBAbrirProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAbrirProjetoActionPerformed

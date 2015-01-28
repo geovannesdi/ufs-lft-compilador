@@ -1,36 +1,37 @@
-
 package jflex_plft5;
 
-import java_cup.runtime.*;
+import java.io.*;
+import java_cup.runtime.*; 
 
-// ******************************* Simbolos Terminais -> Tokens ****************************************
-terminal		ANY, PROGRAM, BEGIN, THEN, ELSE, END, DOWNTO, IN, PACKED, TO, ARRAY, VAR, INLINE,
+parser code
+{:
+	
+	
+	public static void main(String args[]) throws Exception{
+		//new parser(new Yylex(new FileInputStream(args[0]))).parse();
+		new CodCup(new CodLex(System.in)).parse();
+	}
+	public void syntax_error(Symbol s){
+		report_error("Error de sintaxis. Linea: " + (s.right + 1) +
+		" Columna: " + s.left + ". Texto: \"" + s.value + "\"", null);
+	}
+:}
+
+terminal String ANY, PROGRAM, BEGIN, THEN, ELSE, END, DOWNTO, IN, PACKED, TO, ARRAY, VAR, INLINE,
 				PROCEDURE, TYPE, ASM, INTERFACE, UNIT, FILE, LABEL, RECORD, UNTIL, CASE, FOR, MOD,
 				REPEAT, IF, CONST, FOWARD, NIL, SET, USES, AND, CONSTRUCTOR, FUNCTION, NOT, SHL, DESTRUCTOR,
 				GOTO, OBJECT, SHR, WHILE, DIV, OF, STRING, WITH, DO, IMPLEMENTATION, OR, XOR, WRITE, READ, INTEGER,
 				REAL, FLOAT, DOUBLE, BOOLEAN, TRUE, FALSE, CHAR, ABRECONCHETE, FECHACONCHETE, MENOR_QUE, MENORIGUAL,
 				MAIORIGUAL, MAIOR_QUE, DP, PV, IGUAL, VG, AP, FP, ACHAVE, FCHAVE, ATRIBUICAO, PO, MULT, DIVR, SOMA, SUB, 
-				PONTO, DIFERENTE, IDENTIFICADOR, NUMERO_INTEIRO, NUMERO_REAL;			 
-				
-				
-// **************** Simbolos Nao-Terminais (Variaveis) definidas na gramatica Pascal ******************
-
-non terminal    program_Pascal, bloco, declaracao_constante, declaracao_tipo,
-				declaracao_variavel, declaracao_proc_e_func, lista_comando,
-				literal_constante, tipos_Pascal, identificador_lista,
-				tipo_simples, tipo_estruturado, tipo_primitivo, indice_lista,
-				proc_ou_func, parametros, lista_formal_parametro,secao_parametro_formal,
-				parametroid_lista, comando, variavel,expressao, case_lista, for_lista, expressao_lista, 
-				subscript_lista, booleano;	
+				PONTO, DIFERENTE, IDENTIFICADOR, NUMERO_INTEIRO, NUMERO_REAL;
 
 
-programa_Pascal ::= PROGRAM IDENTIFICADOR PV bloco;
-				
-bloco ::= declaracao_constante PV|
-		  declaracao_tipo PV |
-		  declaracao_variavel PV |
-		  declaracao_proc_e_func PV |
-		  BEGIN lista_comando END PONTO;
+non terminal lista, sentenca, expressao;
 
-			
-				
+lista ::= lista sentenca
+       | sentenca
+       ;
+ sentenca ::= PROGRAM  BEGIN {: System.out.println("Sentencia analizada correctamente. Sin errores."); :}
+			| error {: System.out.println("Error sintactico en la sentencia"); :}
+			;      
+

@@ -28,6 +28,10 @@ import static jflex_plft5.CodSym.*;
 	// TODO: code that goes to constructor
 %init}
 
+%eofval{
+	return new Symbol(EOF,new String("Fin del archivo"));
+%eofval}
+
 %{
 	private Symbol sym(int type)
 	{
@@ -38,6 +42,8 @@ import static jflex_plft5.CodSym.*;
 	{
 		return new Symbol(type, yyline, yycolumn, value);
 	}
+
+    
 
 	private void error()
 	throws IOException
@@ -57,11 +63,11 @@ writeread 			=  	"("[^")"]*[^";"]*")" 							//ignora o que esta dentro write
 
 %%
 
-"PROGRAM"				{	return sym(PROGRAM); 								}
-"BEGIN"				    {	return sym(BEGIN);     								}
-"THEN"					{	return sym(THEN);     								}
+"PROGRAM"				{	return new Symbol (PROGRAM, yychar, yyline, yytext()); 								}
+"BEGIN"				    {	return new Symbol (BEGIN,yychar, yyline, yytext());     								}
+"THEN"					{	return new Symbol(THEN,yychar, yyline, yytext());     								}
 "ELSE"				    {	return sym(ELSE);     								}
-"END"				    {	return sym(END);     								}
+"END"				    {	return new Symbol(END,yychar, yyline, yytext());     								}
 "DOWNTO"				{	return sym(DOWNTO); 								}
 "IN"				    {	return sym(IN);     								}
 "PACKED"				{	return sym(PACKED);     							}
@@ -136,7 +142,7 @@ writeread 			=  	"("[^")"]*[^";"]*")" 							//ignora o que esta dentro write
 "/"						{	return sym(DIVR);									}
 "+"						{	return sym(SOMA);									}
 "-"						{	return sym(SUB);									}
-"."						{	return sym(PONTO);									}
+"."						{	return new Symbol (PONTO,yychar, yyline, yytext());									}
 "<>"					{	return sym(DIFERENTE);			    				}
 {identificador}			{	return sym(IDENTIFICADOR, yytext());				}
 {numero_inteiro}		{	return sym(NUMERO_INTEIRO, yytext());				}

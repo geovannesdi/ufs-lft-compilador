@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java_cup.runtime.Symbol;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -14,8 +16,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import SalvarAbrirArquivo.Salvar;
+
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import jflex_plft5.AnalisadorSintatico;
 import jflex_plft5.Jflex;
 
 /**
@@ -152,7 +158,12 @@ public class AppTela extends javax.swing.JFrame {
         jBASintatico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBASintatico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBASintaticoActionPerformed(evt);
+                try {
+					jBASintaticoActionPerformed(evt);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         jToolBar1.add(jBASintatico);
@@ -304,13 +315,13 @@ public class AppTela extends javax.swing.JFrame {
 
     private void jMSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSobreMouseClicked
              JOptionPane.showMessageDialog(null, "Estou no evento");    }//GEN-LAST:event_jMSobreMouseClicked
-
+   Jflex jflex;
     private void jBALexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBALexicoActionPerformed
     	
     	 try {
-             Jflex obj = new Jflex();
+                 jflex = new Jflex();
                                  
-             jTAErros.setText(obj.resultadoLexico(_caminho.getAbsolutePath()));
+             jTAErros.setText(jflex.resultadoLexico(_caminho));
              
          } catch (IOException ex) {
              Logger.getLogger(AppTela.class.getName()).log(Level.SEVERE, null, ex);
@@ -319,12 +330,39 @@ public class AppTela extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jBALexicoActionPerformed
 
-    private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASintaticoActionPerformed
-         
+    private void jBASintaticoActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_jBASintaticoActionPerformed
+     
+   AnalisadorSintatico analisadorSintatico = new AnalisadorSintatico(_caminho);
+  analisadorSintatico.S();
+   
+    	
+    	
+    /*	
+    	jTAErros.setText("");
+     String resultado="Sintatico sem Erro!!!!";
+    
+    jflex.resultadoSintatico(_caminho.getAbsolutePath());
+    /*
+    ArrayList<Symbol> tok = obj.resultadoSintatico(_caminho.getAbsolutePath());
+    if(tok!=null)
+    	for (int i = 0; i < tok.size(); i++)
+    		resultado = "Error de sintaxis. Linea: " + (tok.get(i).right + 1) +	" Columna: " + tok.get(i).left + ". Texto: \"" + tok.get(i).value;
+			
+		*/
+    /*
+    if(Jflex.resul.size()!=0)
+      for (int i = 0; i < Jflex.resul.size(); i++) 
+      {
+	    	resultado+=Jflex.resul.get(i)+"\n";
+	  }    
+      
+    jTAErros.setText(resultado);
+    */
     }//GEN-LAST:event_jBASintaticoActionPerformed
 
     private void jBASemanticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBASemanticoActionPerformed
         // TODO add your handling code here:
+   
     }//GEN-LAST:event_jBASemanticoActionPerformed
 
     private void jBExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExecutarActionPerformed

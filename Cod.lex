@@ -27,11 +27,11 @@ import static jflex_plft5.CodSym.*;
 %init{
 	// TODO: code that goes to constructor
 %init}
-
+/*
 %eofval{
 	return new Symbol(EOF,new String("Fin del archivo"));
 %eofval}
-
+*/
 %{
 	private Symbol sym(int type)
 	{
@@ -51,7 +51,7 @@ import static jflex_plft5.CodSym.*;
 		throw new IOException("illegal text at line = "+yyline+", column = "+yycolumn+", text = '"+yytext()+"'");
 	}
 %}
-%state STRING, COMENTARIOS
+%state  COMENTARIOS
 
 caracter			=	[a-zA-Z]
 digito				=	[0-9]
@@ -67,7 +67,7 @@ writeread 			=  	"("[^")"]*[^";"]*")" 							//ignora o que esta dentro write
 "BEGIN"				    {	return new Symbol (BEGIN,yychar, yyline, yytext());     								}
 "THEN"					{	return new Symbol(THEN,yychar, yyline, yytext());     								}
 "ELSE"				    {	return sym(ELSE);     								}
-"END"				    {	return new Symbol(END,yychar, yyline, yytext());     								}
+"END"				    {	return new Symbol(END,yychar, yyline, yytext());    								}
 "DOWNTO"				{	return sym(DOWNTO); 								}
 "IN"				    {	return sym(IN);     								}
 "PACKED"				{	return sym(PACKED);     							}

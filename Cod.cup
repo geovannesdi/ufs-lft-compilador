@@ -1,20 +1,39 @@
 package jflex_plft5;
 
 import java.io.*;
-import java_cup.runtime.*; 
+import java_cup.runtime.*;
+import java.util.ArrayList;
+
+
+
+action code{:
+    String resul="";
+          
+:};
+
 
 parser code
 {:
+	
+	
 	
 	
 	public static void main(String args[]) throws Exception{
 		//new parser(new Yylex(new FileInputStream(args[0]))).parse();
 		new CodCup(new CodLex(System.in)).parse();
 	}
+	
+		
 	public void syntax_error(Symbol s){
-		report_error("Error de sintaxis. Linea: " + (s.right + 1) +
-		" Columna: " + s.left + ". Texto: \"" + s.value + "\"", null);
+	    
+	    String resul = "Erro de Sintaica. Linha: " + (s.right + 1) + " Coluna: " + s.left + ". Texto: \"" + s.value + "\"";				
+		Jflex.resul.add(resul);
+		report_error(resul,null);
+		
 	}
+	
+	
+	
 :}
 
 terminal String ANY, PROGRAM, BEGIN, THEN, ELSE, END, DOWNTO, IN, PACKED, TO, ARRAY, VAR, INLINE,
@@ -26,12 +45,25 @@ terminal String ANY, PROGRAM, BEGIN, THEN, ELSE, END, DOWNTO, IN, PACKED, TO, AR
 				PONTO, DIFERENTE, IDENTIFICADOR, NUMERO_INTEIRO, NUMERO_REAL;
 
 
-non terminal lista, sentenca, expressao;
+non terminal    programPascal, constante, tipo,
+				variavel, comandos,bloco,termo;  
 
-lista ::= lista sentenca
-       | sentenca
-       ;
- sentenca ::= PROGRAM  BEGIN {: System.out.println("Sentencia analizada correctamente. Sin errores."); :}
-			| error {: System.out.println("Error sintactico en la sentencia"); :}
-			;      
+programPascal ::= PROGRAM IDENTIFICADOR PV bloco;
+
+bloco ::= constante PV |
+		  tipo PV |
+		  variavel PV |
+		  BEGIN comandos END;
+
+             
+             
+              
+             
+              		  
+		  
+		  
+
+
+
+
 

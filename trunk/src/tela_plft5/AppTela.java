@@ -338,7 +338,7 @@ public class AppTela extends javax.swing.JFrame {
     	
     	
     /*	
-    	jTAErros.setText("");
+    	jTAResultados.setText("");
      String resultado="Sintatico sem Erro!!!!";
     
     jflex.resultadoSintatico(_caminho.getAbsolutePath());
@@ -356,7 +356,7 @@ public class AppTela extends javax.swing.JFrame {
 	    	resultado+=Jflex.resul.get(i)+"\n";
 	  }    
       
-    jTAErros.setText(resultado);
+    jTAResultados.setText(resultado);
     */
     }//GEN-LAST:event_jBASintaticoActionPerformed
 

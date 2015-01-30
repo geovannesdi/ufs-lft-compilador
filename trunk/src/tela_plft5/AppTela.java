@@ -79,7 +79,7 @@ public class AppTela extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTAErros = new javax.swing.JTextArea();
+        jTAResultados = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMINovo = new javax.swing.JMenuItem();
@@ -214,12 +214,12 @@ public class AppTela extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("novo 1", jScrollPane4);
 
-        jTAErros.setEditable(false);
-        jTAErros.setColumns(20);
-        jTAErros.setForeground(new java.awt.Color(255, 0, 51));
-        jTAErros.setRows(5);
-        jTAErros.setBorder(javax.swing.BorderFactory.createTitledBorder("Erros:"));
-        jScrollPane1.setViewportView(jTAErros);
+        jTAResultados.setEditable(false);
+        jTAResultados.setColumns(20);
+        jTAResultados.setForeground(new java.awt.Color(255, 0, 51));
+        jTAResultados.setRows(5);
+        jTAResultados.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultados:"));
+        jScrollPane1.setViewportView(jTAResultados);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -321,7 +321,7 @@ public class AppTela extends javax.swing.JFrame {
     	 try {
                  jflex = new Jflex();
                                  
-             jTAErros.setText(jflex.resultadoLexico(_caminho));
+             jTAResultados.setText(jflex.resultadoLexico(_caminho));
              
          } catch (IOException ex) {
              Logger.getLogger(AppTela.class.getName()).log(Level.SEVERE, null, ex);
@@ -467,7 +467,7 @@ public class AppTela extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JTextArea jTAErros;
+    private javax.swing.JTextArea jTAResultados;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JToolBar jToolBar1;

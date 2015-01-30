@@ -1,4 +1,3 @@
-
 package jflex_plft5;
 
 import java.io.File;
@@ -8,8 +7,17 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java_cup.runtime.Symbol;
-
 import javax.swing.JOptionPane;
+
+/**
+*
+* @author Anderson Cunha
+* @author Antonio Douglas
+* @author Erivan Santana 
+* @author Geovanne Barreto
+*         
+*/
+
 public class AnalisadorSintatico {
 
 
